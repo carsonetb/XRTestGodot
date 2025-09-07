@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://b6cnit3gmsgj6"]
+
+[ext_resource type="Script" uid="uid://cig7x37rpcs0t" path="res://gun/gun.gd" id="1_dk5gl"]
+[ext_resource type="PackedScene" uid="uid://b25872flstxoh" path="res://gun/gun_model.tscn" id="2_0qvfs"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vk1bi"]
+size = Vector3(1.873169, 1.656311, 8.236816)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dk5gl"]
+size = Vector3(0.49071884, 2.5341263, 2.1980286)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kw0bs"]
+size = Vector3(1.873169, 2.0888977, 5.349243)
+
+[node name="RigidBody3D" type="RigidBody3D"]
+mass = 0.78
+linear_damp = 40.0
+angular_damp = 50.0
+script = ExtResource("1_dk5gl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.0022318605, -0.07901001, -3.4073327)
+shape = SubResource("BoxShape3D_vk1bi")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.12656201, -2.241827, -1.5787346)
+shape = SubResource("BoxShape3D_dk5gl")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1, -1.6384408e-07, -2.638106e-08, -8.192203e-08, 0.3491179, 0.9370788, -1.4432467e-07, 0.9370788, -0.3491179, 0.002231396, -3.297172, 1.7558932)
+shape = SubResource("BoxShape3D_kw0bs")
+
+[node name="GunModel" parent="." instance=ExtResource("2_0qvfs")]
+transform = Transform3D(-1.3113416e-07, 3, 1.3113416e-07, 0, -1.3113416e-07, 3, 3, 1.3113416e-07, 5.7320566e-15, -1.0106833, -2.6026058, -2.2818193)
+
+[editable path="GunModel"]

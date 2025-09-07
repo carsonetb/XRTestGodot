@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgjsr6aor6oqm"]
+
+[ext_resource type="PackedScene" uid="uid://d3bfxig3pxh2n" path="res://bullet/models/casing.blend" id="1_fo6gq"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6fuaf"]
+radius = 0.25830078
+height = 1.6148949
+
+[node name="Shell" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14720726, -8.881784e-16)
+shape = SubResource("CapsuleShape3D_6fuaf")
+
+[node name="casing" parent="." instance=ExtResource("1_fo6gq")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -0.39107132, -5.289489, -0.79012483)

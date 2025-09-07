@@ -1,0 +1,107 @@
+[gd_scene load_steps=11 format=3 uid="uid://bb0y3mal68jxi"]
+
+[ext_resource type="Script" uid="uid://b7eubamrigr17" path="res://world.gd" id="1_f3sb7"]
+[ext_resource type="PackedScene" uid="uid://b6cnit3gmsgj6" path="res://gun/gun.tscn" id="2_fj7yv"]
+[ext_resource type="Script" uid="uid://d0s6axdysyavm" path="res://hand.gd" id="2_tlwt5"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_f3sb7"]
+
+[sub_resource type="Sky" id="Sky_fj7yv"]
+sky_material = SubResource("ProceduralSkyMaterial_f3sb7")
+
+[sub_resource type="Environment" id="Environment_tlwt5"]
+background_mode = 2
+sky = SubResource("Sky_fj7yv")
+sdfgi_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_fj7yv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fj7yv"]
+size = Vector3(7.438904, 0.5876465, 8.19873)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tlwt5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tlwt5"]
+size = Vector3(0.87939453, 0.8972168, 0.91967773)
+
+[node name="Origin" type="XROrigin3D"]
+script = ExtResource("1_f3sb7")
+
+[node name="XRCamera3D" type="XRCamera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+
+[node name="Gun" parent="." instance=ExtResource("2_fj7yv")]
+transform = Transform3D(-0.033, 0, -4.9828612e-09, 0, 0.033, 0, 4.9828612e-09, 0, -0.033, -0.5, 1, -0.45)
+
+[node name="LeftHand" type="XRController3D" parent="." node_paths=PackedStringArray("bullet_spawn_pos", "shell_spawn_pos", "gun")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -0.5)
+tracker = &"left_hand"
+script = ExtResource("2_tlwt5")
+bullet_spawn_pos = NodePath("BulletSpawnPos")
+shell_spawn_pos = NodePath("ShellSpawnPos")
+gun = NodePath("../Gun")
+
+[node name="BulletSpawnPos" type="Node3D" parent="LeftHand"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.19553751)
+
+[node name="ShellSpawnPos" type="Node3D" parent="LeftHand"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.021933943, 0.02252078, -0.02249229)
+
+[node name="Gun2" parent="." instance=ExtResource("2_fj7yv")]
+transform = Transform3D(-0.033, 0, -4.9828612e-09, 0, 0.033, 0, 4.9828612e-09, 0, -0.033, 0.5, 1, -0.45)
+
+[node name="RightHand" type="XRController3D" parent="." node_paths=PackedStringArray("bullet_spawn_pos", "shell_spawn_pos", "gun")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
+tracker = &"right_hand"
+show_when_tracked = true
+script = ExtResource("2_tlwt5")
+bullet_spawn_pos = NodePath("BulletSpawnPos")
+shell_spawn_pos = NodePath("ShellSpawnPos")
+gun = NodePath("../Gun2")
+
+[node name="BulletSpawnPos" type="Node3D" parent="RightHand"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1955375)
+
+[node name="ShellSpawnPos" type="Node3D" parent="RightHand"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03257191, 0.032095313, -0.02249229)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tlwt5")
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="Floor" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(7.4627213, 0, 0, 0, 0.15729135, 0, 0, 0, 8.17567, 0, 0, 0)
+mesh = SubResource("BoxMesh_fj7yv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.040863037, -0.20617676, -0.013916016)
+shape = SubResource("BoxShape3D_fj7yv")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.87957114, -0.35945433, 0.31168443, 0, 0.65511936, 0.7555254, -0.47576737, -0.6645383, 0.5762241, 0.23954391, 3.421152, 2.1846008)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1413808, -2.044292)
+mass = 4.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("BoxMesh_tlwt5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)
+shape = SubResource("BoxShape3D_tlwt5")
+
+[node name="RigidBody3D2" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2291927, -2.044292)
+mass = 4.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D2"]
+mesh = SubResource("BoxMesh_tlwt5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2"]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)
+shape = SubResource("BoxShape3D_tlwt5")
+
+[connection signal="button_pressed" from="LeftHand" to="LeftHand" method="_on_button_pressed"]
+[connection signal="button_pressed" from="RightHand" to="RightHand" method="_on_button_pressed"]

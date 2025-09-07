@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7rl0pq345pge"]
+
+[ext_resource type="PackedScene" uid="uid://c8lbrylw0css" path="res://bullet/models/bullet.blend" id="1_k2aps"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v7oki"]
+radius = 0.16601563
+height = 0.71655273
+
+[node name="Bullet" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+continuous_cd = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06871633, 4.440892e-16)
+shape = SubResource("CapsuleShape3D_v7oki")
+
+[node name="bullet" parent="." instance=ExtResource("1_k2aps")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -0.37999275, -6.185035, -0.7857158)

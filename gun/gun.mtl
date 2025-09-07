@@ -1,0 +1,86 @@
+# Blender 4.0.1 MTL File: 'revolverENFORCER.blend'
+# www.blender.org
+
+newmtl Material.001
+Ns 453.236389
+Ka 1.000000 1.000000 1.000000
+Kd 0.235675 0.235675 0.235675
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 0.863636
+illum 6
+map_refl Poliigon_MetalPaintedMatte_7037/2K/Poliigon_MetalPaintedMatte_7037_Metallic.jpg
+
+newmtl Material.002
+Ns 442.696350
+Ka 1.000000 1.000000 1.000000
+Kd 0.276515 0.276515 0.276515
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+
+newmtl Material.004
+Ns 549.582947
+Ka 0.897638 0.897638 0.897638
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd Poliigon_MetalSteelBrushed_7174/2K/Poliigon_MetalSteelBrushed_7174_BaseColor.jpg
+map_refl Poliigon_MetalSteelBrushed_7174/2K/Poliigon_MetalSteelBrushed_7174_Metallic.jpg
+
+newmtl Material.005
+Ns 168.616928
+Ka 0.897638 0.897638 0.897638
+Kd 0.362648 0.362648 0.362648
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_refl Poliigon_MetalPaintedMatte_7037/2K/Poliigon_MetalPaintedMatte_7037_Metallic.jpg
+
+newmtl Material.006
+Ns 626.216736
+Ka 0.763780 0.763780 0.763780
+Kd 0.119727 0.119727 0.119727
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+
+newmtl Material.008
+Ka 0.874016 0.874016 0.874016
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd Poliigon_MetalPaintedMatte_7037/2K/Poliigon_MetalPaintedMatte_7037_BaseColor.jpg
+map_Ns Poliigon_MetalPaintedMatte_7037/2K/Poliigon_MetalPaintedMatte_7037_Roughness.jpg
+map_refl Poliigon_MetalPaintedMatte_7037/2K/Poliigon_MetalPaintedMatte_7037_Metallic.jpg
+
+newmtl Material.009
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.016743 0.016178 0.016879
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl Material.010
+Ns 474.688477
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
