@@ -1,16 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6cnit3gmsgj6"]
+[gd_scene load_steps=8 format=3 uid="uid://b6cnit3gmsgj6"]
 
 [ext_resource type="Script" uid="uid://cig7x37rpcs0t" path="res://gun/gun.gd" id="1_dk5gl"]
 [ext_resource type="PackedScene" uid="uid://b25872flstxoh" path="res://gun/gun_model.tscn" id="2_0qvfs"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_vk1bi"]
-size = Vector3(1.873169, 1.656311, 8.236816)
+[sub_resource type="BoxShape3D" id="BoxShape3D_0qvfs"]
+size = Vector3(1.04245, 1.656311, 8.236816)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_dk5gl"]
-size = Vector3(0.49071884, 2.5341263, 2.1980286)
+[sub_resource type="BoxShape3D" id="BoxShape3D_qhldj"]
+size = Vector3(0.49071884, 2.167942, 3.5208893)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_kw0bs"]
-size = Vector3(1.873169, 2.0888977, 5.349243)
+[sub_resource type="BoxShape3D" id="BoxShape3D_fvq5x"]
+size = Vector3(0.49071884, 2.0053577, 1.0593605)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_22jee"]
+size = Vector3(1.3050065, 2.0888977, 3.1434937)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sf843"]
+size = Vector3(1.2007389, 2.0888977, 3.1434937)
 
 [node name="RigidBody3D" type="RigidBody3D"]
 mass = 0.78
@@ -19,18 +25,26 @@ angular_damp = 50.0
 script = ExtResource("1_dk5gl")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.0022318605, 2.2832894, -3.519184)
-shape = SubResource("BoxShape3D_vk1bi")
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.015483588, 1.2269804, -2.6310003)
+shape = SubResource("BoxShape3D_0qvfs")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.12656201, 0.12047243, -1.6905861)
-shape = SubResource("BoxShape3D_dk5gl")
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.12656207, -0.75274444, -0.14097202)
+shape = SubResource("BoxShape3D_qhldj")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.12656198, 0.17338192, -2.4116914)
+shape = SubResource("BoxShape3D_fvq5x")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(-1, -1.6384408e-07, -2.638106e-08, -8.192203e-08, 0.3491179, 0.9370788, -1.4432467e-07, 0.9370788, -0.3491179, 0.002231396, -0.9348726, 1.6440418)
-shape = SubResource("BoxShape3D_kw0bs")
+transform = Transform3D(-1, -1.6384408e-07, -2.638106e-08, -8.192203e-08, 0.3491179, 0.9370788, -1.4432467e-07, 0.9370788, -0.3491179, -0.30391115, -3.024662, 2.917259)
+shape = SubResource("BoxShape3D_22jee")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1, -1.6384408e-07, -2.6381063e-08, -9.902979e-08, 0.46158028, 0.88709843, -1.3316881e-07, 0.88709843, -0.46158028, -0.15575522, -1.1109627, 2.078674)
+shape = SubResource("BoxShape3D_sf843")
 
 [node name="GunModel" parent="." instance=ExtResource("2_0qvfs")]
-transform = Transform3D(-1.3113416e-07, 3, 1.3113416e-07, 0, -1.3113416e-07, 3, 3, 1.3113416e-07, 5.7320566e-15, -1.0106833, -0.24030638, -2.3936708)
+transform = Transform3D(-1.3113416e-07, 3, 1.3113416e-07, 0, -1.3113416e-07, 3, 3, 1.3113416e-07, 5.7320566e-15, -1.0106833, -1.2966154, -1.505487)
 
 [editable path="GunModel"]
