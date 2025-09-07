@@ -31,7 +31,7 @@ script = ExtResource("1_f3sb7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 
 [node name="Gun" parent="." instance=ExtResource("2_fj7yv")]
-transform = Transform3D(-0.033, 0, -4.9828612e-09, 0, 0.033, 0, 4.9828612e-09, 0, -0.033, -0.5, 1, -0.45)
+transform = Transform3D(-0.025, 0, -3.774895e-09, 0, 0.025, 0, 3.774895e-09, 0, -0.025, -0.5, 1, -0.45)
 
 [node name="LeftHand" type="XRController3D" parent="." node_paths=PackedStringArray("bullet_spawn_pos", "shell_spawn_pos", "gun")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -0.5)
