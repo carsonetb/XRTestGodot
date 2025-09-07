@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://b6cnit3gmsgj6"]
+[gd_scene load_steps=11 format=3 uid="uid://b6cnit3gmsgj6"]
 
-[ext_resource type="Script" uid="uid://cig7x37rpcs0t" path="res://gun/gun.gd" id="1_dk5gl"]
+[ext_resource type="Script" uid="uid://cig7x37rpcs0t" path="res://grab/grabbable_object.gd" id="1_dk5gl"]
 [ext_resource type="PackedScene" uid="uid://b25872flstxoh" path="res://gun/gun_model.tscn" id="2_0qvfs"]
+[ext_resource type="Script" uid="uid://ckorlonungtcd" path="res://grab/grabbable_area.gd" id="3_qhldj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0qvfs"]
 size = Vector3(1.04245, 1.656311, 8.236816)
@@ -18,33 +19,63 @@ size = Vector3(1.3050065, 2.0888977, 3.1434937)
 [sub_resource type="BoxShape3D" id="BoxShape3D_sf843"]
 size = Vector3(1.2007389, 2.0888977, 3.1434937)
 
-[node name="RigidBody3D" type="RigidBody3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_u0xb8"]
+size = Vector3(1.3410645, 1.9013672, 4.666992)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o2n5o"]
+size = Vector3(1, 4.3498535, 4.4255676)
+
+[node name="Gun" type="RigidBody3D" node_paths=PackedStringArray("bullet_spawn_pos", "shell_spawn_pos")]
 mass = 0.78
 linear_damp = 40.0
-angular_damp = 50.0
+angular_damp = 90.0
 script = ExtResource("1_dk5gl")
+bullet_spawn_pos = NodePath("BulletSpawnPos")
+shell_spawn_pos = NodePath("ShellSpawnPos")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="BarrelCollider" type="CollisionShape3D" parent="."]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.015483588, 1.2269804, -1.8186145)
 shape = SubResource("BoxShape3D_0qvfs")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+[node name="TriggerCollider1" type="CollisionShape3D" parent="."]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.12656207, -0.75274444, 0.6714138)
 shape = SubResource("BoxShape3D_qhldj")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
+[node name="TriggerCollider2" type="CollisionShape3D" parent="."]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.12656198, 0.17338192, -1.5993056)
 shape = SubResource("BoxShape3D_fvq5x")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+[node name="HandleCollider1" type="CollisionShape3D" parent="."]
 transform = Transform3D(-1, -1.6384408e-07, -2.638106e-08, -8.192203e-08, 0.3491179, 0.9370788, -1.4432467e-07, 0.9370788, -0.3491179, -0.30391115, -3.024662, 3.7296448)
 shape = SubResource("BoxShape3D_22jee")
 
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
+[node name="HandleCollider2" type="CollisionShape3D" parent="."]
 transform = Transform3D(-1, -1.6384408e-07, -2.6381063e-08, -9.902979e-08, 0.46158028, 0.88709843, -1.3316881e-07, 0.88709843, -0.46158028, -0.15575522, -1.1109627, 2.8910599)
 shape = SubResource("BoxShape3D_sf843")
 
 [node name="GunModel" parent="." instance=ExtResource("2_0qvfs")]
 transform = Transform3D(-1.3113416e-07, 3, 1.3113416e-07, 0, -1.3113416e-07, 3, 3, 1.3113416e-07, 5.7320566e-15, -1.0106833, -1.2966154, -0.69310117)
+
+[node name="GrabbableArea" type="Area3D" parent="." node_paths=PackedStringArray("grab_point")]
+script = ExtResource("3_qhldj")
+grab_point = NodePath("GrabPosition")
+
+[node name="HandleGrabArea" type="CollisionShape3D" parent="GrabbableArea"]
+transform = Transform3D(1, 0, 0, 0, 0.47634268, -0.8792597, 0, 0.8792597, 0.47634268, -0.23244947, -1.8809835, 3.4532015)
+shape = SubResource("BoxShape3D_u0xb8")
+debug_color = Color(0.8968836, 0.28516093, 0.36678725, 0.41960785)
+
+[node name="TriggerGrabArea" type="CollisionShape3D" parent="GrabbableArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19958496, 0.154953)
+shape = SubResource("BoxShape3D_o2n5o")
+debug_color = Color(0.8980392, 0.28627452, 0.36862746, 0.41960785)
+
+[node name="GrabPosition" type="Marker3D" parent="GrabbableArea"]
+
+[node name="BulletSpawnPos" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4771677, -5.8011484)
+
+[node name="ShellSpawnPos" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0299139, 1.1231868, -1.458164)
 
 [editable path="GunModel"]

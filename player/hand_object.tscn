@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://nsdmbtqblqp4"]
+
+[ext_resource type="Script" uid="uid://1efsomh1bbc7" path="res://player/hand_object.gd" id="1_8cfa1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8cfa1"]
+size = Vector3(0.089, 0.02, 0.19)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wcr6k"]
+size = Vector3(0.089, 0.02, 0.19)
+
+[node name="HandObject" type="RigidBody3D" node_paths=PackedStringArray("attach_point")]
+mass = 0.4
+linear_damp = 40.0
+script = ExtResource("1_8cfa1")
+attach_point = NodePath("AttachPoint")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.371139e-08, -1, 0, 0.9517512, -4.1602366e-08, -0.30687076, 0.30687076, -1.3413747e-08, 0.9517512, 0.006916025, -0.016780695, 0.030398108)
+shape = SubResource("BoxShape3D_8cfa1")
+
+[node name="Box" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.371139e-08, -1, 0, 0.9517512, -4.1602366e-08, -0.30687076, 0.30687076, -1.3413747e-08, 0.9517512, 0.006916025, -0.016780695, 0.030398108)
+mesh = SubResource("BoxMesh_wcr6k")
+
+[node name="AttachPoint" type="Marker3D" parent="."]
+transform = Transform3D(-4.371139e-08, -1, 0, 0.9517512, -4.1602366e-08, -0.30687076, 0.30687076, -1.3413747e-08, 0.9517512, -0.013832049, -0.016780697, 0.030398108)
+gizmo_extents = 0.05

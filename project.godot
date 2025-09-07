@@ -13,7 +13,7 @@ config_version=5
 config/name="xr_test_godot"
 run/main_scene="uid://bb0y3mal68jxi"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://icon.svg"
+run/max_fps=144
 
 [input]
 
@@ -33,5 +33,4 @@ renderer/rendering_method="mobile"
 [xr]
 
 openxr/enabled=true
-openxr/environment_blend_mode=2
 shaders/enabled=true
