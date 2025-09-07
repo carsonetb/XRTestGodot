@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bb0y3mal68jxi"]
+[gd_scene load_steps=12 format=3 uid="uid://bb0y3mal68jxi"]
 
 [ext_resource type="Script" uid="uid://b7eubamrigr17" path="res://world.gd" id="1_f3sb7"]
 [ext_resource type="PackedScene" uid="uid://b6cnit3gmsgj6" path="res://gun/gun.tscn" id="2_fj7yv"]
@@ -12,14 +12,18 @@ sky_material = SubResource("ProceduralSkyMaterial_f3sb7")
 [sub_resource type="Environment" id="Environment_tlwt5"]
 background_mode = 2
 sky = SubResource("Sky_fj7yv")
-sdfgi_enabled = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_fj7yv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fj7yv"]
 size = Vector3(7.438904, 0.5876465, 8.19873)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tlwt5"]
+metallic = 1.0
+roughness = 0.0
+
 [sub_resource type="BoxMesh" id="BoxMesh_tlwt5"]
+material = SubResource("StandardMaterial3D_tlwt5")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tlwt5"]
 size = Vector3(0.87939453, 0.8972168, 0.91967773)
@@ -80,6 +84,9 @@ shape = SubResource("BoxShape3D_fj7yv")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.87957114, -0.35945433, 0.31168443, 0, 0.65511936, 0.7555254, -0.47576737, -0.6645383, 0.5762241, 0.23954391, 3.421152, 2.1846008)
+shadow_enabled = true
+shadow_bias = 2.061
+shadow_blur = 0.5
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1413808, -2.044292)

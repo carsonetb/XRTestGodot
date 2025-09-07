@@ -8,6 +8,7 @@ height = 0.71655273
 
 [node name="Bullet" type="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+mass = 0.1
 continuous_cd = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
