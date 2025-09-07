@@ -25,26 +25,26 @@ angular_damp = 50.0
 script = ExtResource("1_dk5gl")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.015483588, 1.2269804, -2.6310003)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.015483588, 1.2269804, -1.8186145)
 shape = SubResource("BoxShape3D_0qvfs")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.12656207, -0.75274444, -0.14097202)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.12656207, -0.75274444, 0.6714138)
 shape = SubResource("BoxShape3D_qhldj")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.12656198, 0.17338192, -2.4116914)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.12656198, 0.17338192, -1.5993056)
 shape = SubResource("BoxShape3D_fvq5x")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(-1, -1.6384408e-07, -2.638106e-08, -8.192203e-08, 0.3491179, 0.9370788, -1.4432467e-07, 0.9370788, -0.3491179, -0.30391115, -3.024662, 2.917259)
+transform = Transform3D(-1, -1.6384408e-07, -2.638106e-08, -8.192203e-08, 0.3491179, 0.9370788, -1.4432467e-07, 0.9370788, -0.3491179, -0.30391115, -3.024662, 3.7296448)
 shape = SubResource("BoxShape3D_22jee")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
-transform = Transform3D(-1, -1.6384408e-07, -2.6381063e-08, -9.902979e-08, 0.46158028, 0.88709843, -1.3316881e-07, 0.88709843, -0.46158028, -0.15575522, -1.1109627, 2.078674)
+transform = Transform3D(-1, -1.6384408e-07, -2.6381063e-08, -9.902979e-08, 0.46158028, 0.88709843, -1.3316881e-07, 0.88709843, -0.46158028, -0.15575522, -1.1109627, 2.8910599)
 shape = SubResource("BoxShape3D_sf843")
 
 [node name="GunModel" parent="." instance=ExtResource("2_0qvfs")]
-transform = Transform3D(-1.3113416e-07, 3, 1.3113416e-07, 0, -1.3113416e-07, 3, 3, 1.3113416e-07, 5.7320566e-15, -1.0106833, -1.2966154, -1.505487)
+transform = Transform3D(-1.3113416e-07, 3, 1.3113416e-07, 0, -1.3113416e-07, 3, 3, 1.3113416e-07, 5.7320566e-15, -1.0106833, -1.2966154, -0.69310117)
 
 [editable path="GunModel"]
