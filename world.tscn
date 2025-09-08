@@ -115,6 +115,7 @@ gizmo_extents = 0.01
 [node name="LeftHandObject" parent="." instance=ExtResource("4_aqk2v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -0.5)
 angular_damp = 200.0
+is_left = true
 
 [node name="RightHand" type="XRController3D" parent="." node_paths=PackedStringArray("hand_object", "hand_grab_point", "local_object_point")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
