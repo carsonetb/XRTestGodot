@@ -74,10 +74,10 @@ shape = SubResource("BoxShape3D_o2n5o")
 debug_color = Color(0.8980392, 0.28627452, 0.36862746, 0.41960785)
 
 [node name="LeftGrabPosition" type="Marker3D" parent="GrabbableArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9131135, -0.8491627, 0.99531543)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14887738, -1.7344806, 2.5506208)
 
 [node name="RightGrabPosition" type="Marker3D" parent="GrabbableArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6124948, -0.8491627, 0.99531543)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14212894, -1.4957607, 2.6553473)
 
 [node name="BulletSpawnPos" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4771677, -5.8011484)

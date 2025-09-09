@@ -19,6 +19,9 @@ func _process(_delta: float) -> void:
 		position = aim_pos
 	
 	var grab_force = get_input("grab_force")
+	var index_force = get_input("index_force")
+	var thumb_force = get_input("thumb_force")
+	
 	if grab_force && grab_force > 0.3 && !grabbables_in_area.is_empty() && !holding_object:
 		holding_object = grabbables_in_area[0]
 		holding_object.object.primary_hand = self
@@ -58,6 +61,22 @@ func _process(_delta: float) -> void:
 		hand_object.mass -= holding_object.object.mass
 		holding_object = null
 		extra_rotation_force = 0
+	
+	if grab_force:
+		if is_left_hand:
+			hand_object.left_hand.set_grip(grab_force)
+		else:
+			hand_object.right_hand.set_grip(grab_force)
+	if index_force:
+		if is_left_hand:
+			hand_object.left_hand.set_index(index_force)
+		else:
+			hand_object.right_hand.set_index(index_force)
+	if thumb_force:
+		if is_left_hand:
+			hand_object.left_hand.set_thumb(thumb_force)
+		else:
+			hand_object.right_hand.set_thumb(thumb_force)
 	
 	if !holding_object:
 		return
