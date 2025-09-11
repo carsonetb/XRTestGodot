@@ -1,6 +1,7 @@
 class_name GrabbableArea
 extends Area3D
 
+@export var grab_at_any_point: bool = false
 @export var left_grab_point: Marker3D
 @export var right_grab_point: Marker3D
 

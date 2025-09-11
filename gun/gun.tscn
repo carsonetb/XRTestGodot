@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://b6cnit3gmsgj6"]
 
-[ext_resource type="Script" uid="uid://cig7x37rpcs0t" path="res://grab/grabbable_object.gd" id="1_dk5gl"]
+[ext_resource type="Script" uid="uid://c2gtdl0c3iwe6" path="res://gun/gun.gd" id="1_qhldj"]
 [ext_resource type="PackedScene" uid="uid://b25872flstxoh" path="res://gun/gun_model.tscn" id="2_0qvfs"]
 [ext_resource type="Script" uid="uid://ckorlonungtcd" path="res://grab/grabbable_area.gd" id="3_qhldj"]
 
@@ -29,9 +29,11 @@ size = Vector3(1.3410645, 1.9013672, 4.666992)
 size = Vector3(1, 4.3498535, 4.4255676)
 
 [node name="Gun" type="RigidBody3D" node_paths=PackedStringArray("bullet_spawn_pos", "shell_spawn_pos")]
+collision_layer = 3
+collision_mask = 3
 mass = 0.78
 physics_material_override = SubResource("PhysicsMaterial_qhldj")
-script = ExtResource("1_dk5gl")
+script = ExtResource("1_qhldj")
 bullet_spawn_pos = NodePath("BulletSpawnPos")
 shell_spawn_pos = NodePath("ShellSpawnPos")
 

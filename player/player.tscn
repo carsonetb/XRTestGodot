@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7aho2vyb6fhs"]
+
+[ext_resource type="PackedScene" uid="uid://nsdmbtqblqp4" path="res://player/hand/hand_object.tscn" id="1_oul6g"]
+[ext_resource type="Script" uid="uid://cihlxt4h0nut5" path="res://player/player.gd" id="1_rkbax"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rkbax"]
+radius = 0.25
+height = 1.5
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_rkbax"]
+radius = 0.25
+height = 1.5
+
+[node name="Player" type="RigidBody3D"]
+collision_layer = 2
+collision_mask = 2
+mass = 20.0
+lock_rotation = true
+script = ExtResource("1_rkbax")
+
+[node name="LeftHandObject" parent="." instance=ExtResource("1_oul6g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -0.5)
+angular_damp = 200.0
+is_left = true
+
+[node name="RightHandObject" parent="." instance=ExtResource("1_oul6g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
+angular_damp = 200.0
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+shape = SubResource("CapsuleShape3D_rkbax")
+
+[node name="BodyMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+mesh = SubResource("CapsuleMesh_rkbax")

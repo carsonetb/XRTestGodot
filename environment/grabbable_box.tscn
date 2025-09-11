@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://cn0u235ioppyo"]
+
+[ext_resource type="Script" uid="uid://cig7x37rpcs0t" path="res://grab/grabbable_object.gd" id="1_6hhcp"]
+[ext_resource type="Script" uid="uid://ckorlonungtcd" path="res://grab/grabbable_area.gd" id="1_o1j5m"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tlwt5"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_tlwt5"]
+material = SubResource("StandardMaterial3D_tlwt5")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tlwt5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6hhcp"]
+size = Vector3(0.48, 0.48, 0.48)
+
+[node name="SmallBox" type="RigidBody3D"]
+transform = Transform3D(-0.97437, 0, -0.22495103, 0, 1, 0, 0.22495103, 0, -0.97437, 0, 0, 0)
+collision_layer = 3
+collision_mask = 3
+mass = 4.0
+script = ExtResource("1_6hhcp")
+dont_rescale = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_tlwt5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("BoxShape3D_tlwt5")
+
+[node name="GrabbableArea" type="Area3D" parent="." node_paths=PackedStringArray("left_grab_point", "right_grab_point")]
+script = ExtResource("1_o1j5m")
+grab_at_any_point = true
+left_grab_point = NodePath("LeftGrabPosition")
+right_grab_point = NodePath("RightGrabPosition")
+metadata/_custom_type_script = "uid://ckorlonungtcd"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GrabbableArea"]
+shape = SubResource("BoxShape3D_6hhcp")
+debug_color = Color(0.8980392, 0.28627452, 0.36862746, 0.41960785)
+
+[node name="LeftGrabPosition" type="Marker3D" parent="GrabbableArea"]
+
+[node name="RightGrabPosition" type="Marker3D" parent="GrabbableArea"]
