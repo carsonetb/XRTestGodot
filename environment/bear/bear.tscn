@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://oro0jcn8to1p"]
+
+[ext_resource type="PackedScene" uid="uid://bc145rg5citfk" path="res://environment/bear/bear.glb" id="1_8w7gb"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8w7gb"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o0ljr"]
+radius = 0.30517578
+
+[node name="Bear" type="RigidBody3D"]
+
+[node name="bear" parent="." instance=ExtResource("1_8w7gb")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2958908, 0, -0.36022663)
+shape = SubResource("SphereShape3D_8w7gb")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.1806604e-08, 0.9564237, 0.29198232, -1, -4.371139e-08, 0, 1.2762948e-08, -0.29198232, 0.9564237, 0.3942973, -0.11356628, -0.40640593)
+shape = SubResource("CapsuleShape3D_o0ljr")

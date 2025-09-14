@@ -10,6 +10,8 @@ extends RigidBody3D
 
 func _ready() -> void:
 	if is_left:
+		$RightCollision.disabled = true
 		right_hand.visible = false
 	else:
+		$LeftCollision.disabled = true
 		left_hand.visible = false

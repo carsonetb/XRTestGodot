@@ -2,6 +2,7 @@ class_name GrabbableObject
 extends RigidBody3D
 
 @export var dont_rescale: bool = false
+@export var no_rotate_force: bool = false
 
 @onready var bullet_scene = preload("uid://c7rl0pq345pge")
 @onready var shell_scene = preload("uid://cgjsr6aor6oqm")

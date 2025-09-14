@@ -1,13 +1,15 @@
-[gd_scene load_steps=15 format=3 uid="uid://bb0y3mal68jxi"]
+[gd_scene load_steps=17 format=3 uid="uid://bb0y3mal68jxi"]
 
 [ext_resource type="Script" uid="uid://b7eubamrigr17" path="res://world.gd" id="1_f3sb7"]
 [ext_resource type="PackedScene" uid="uid://b6cnit3gmsgj6" path="res://gun/gun.tscn" id="2_fj7yv"]
 [ext_resource type="Script" uid="uid://d0s6axdysyavm" path="res://player/hand/hand.gd" id="2_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://cn0u235ioppyo" path="res://environment/grabbable_box.tscn" id="3_036b0"]
 [ext_resource type="Script" uid="uid://b7tnbcufs3h13" path="res://player/player_xr_nodes.gd" id="5_pkg7o"]
-[ext_resource type="PackedScene" uid="uid://bc4ibtotqet1h" path="res://environment/grabbable_bat/grabbable_bat.tscn.tscn" id="6_dwbse"]
+[ext_resource type="PackedScene" uid="uid://bc4ibtotqet1h" path="res://environment/grabbable_bat/grabbable_bat.tscn" id="6_dwbse"]
 [ext_resource type="PackedScene" uid="uid://b7aho2vyb6fhs" path="res://player/player.tscn" id="7_pkg7o"]
+[ext_resource type="PackedScene" uid="uid://caymno7i5wonl" path="res://environment/building/building.tscn" id="7_wse8f"]
 [ext_resource type="PackedScene" uid="uid://nffs1pme33la" path="res://environment/table/table.tscn" id="8_gbfbk"]
+[ext_resource type="PackedScene" uid="uid://oro0jcn8to1p" path="res://environment/bear/bear.tscn" id="9_ioo17"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_f3sb7"]
 
@@ -17,11 +19,14 @@ sky_material = SubResource("ProceduralSkyMaterial_f3sb7")
 [sub_resource type="Environment" id="Environment_tlwt5"]
 background_mode = 2
 sky = SubResource("Sky_fj7yv")
+fog_enabled = true
+fog_density = 0.03
+volumetric_fog_enabled = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_fj7yv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fj7yv"]
-size = Vector3(7.438904, 0.5876465, 8.19873)
+size = Vector3(21.683712, 0.5876465, 8.19873)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_aqk2v"]
 radius = 0.052785624
@@ -34,10 +39,11 @@ script = ExtResource("1_f3sb7")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
 environment = SubResource("Environment_tlwt5")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
-transform = Transform3D(0.87957114, -0.35945436, 0.3116844, 0, 0.6551194, 0.7555254, -0.47576737, -0.6645384, 0.5762241, 0.23954391, 3.421152, 2.1846008)
+[node name="OmniLight3D" type="OmniLight3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1143572, -0.42448282)
+light_color = Color(0.96740526, 0.77529615, 0.7525633, 1)
+light_energy = 1.395
 shadow_enabled = true
-shadow_blur = 0.5
 
 [node name="Objects" type="Node3D" parent="."]
 
@@ -59,15 +65,46 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="Floor" type="MeshInstance3D" parent="Objects/Floor"]
-transform = Transform3D(7.4627213, 0, 0, 0, 0.15729135, 0, 0, 0, 8.17567, 0, 0, 0)
+transform = Transform3D(22, 0, 0, 0, 0.1572914, 0, 0, 0, 8.17567, 0, 0, 0)
 mesh = SubResource("BoxMesh_fj7yv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.040863037, -0.20617676, -0.013916016)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0033016205, -0.20617676, -0.013916016)
 shape = SubResource("BoxShape3D_fj7yv")
 
+[node name="Table" parent="Objects" instance=ExtResource("8_gbfbk")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.06254241, 0.9033084, -2.112905)
+collision_layer = 3
+collision_mask = 3
+mass = 75.0
+can_sleep = false
+
 [node name="GrabbableBat" parent="Objects" instance=ExtResource("6_dwbse")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18394154, 1.5663196, -0.98309994)
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.18394154, 1.5663196, -1.7895732)
+can_sleep = false
+continuous_cd = true
+
+[node name="Bear" parent="Objects" instance=ExtResource("9_ioo17")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.48914, 1.3107, -1.2420853)
+mass = 200.0
+
+[node name="Building" parent="Objects" instance=ExtResource("7_wse8f")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.010615349, 11.612487, 6.384944)
+
+[node name="Building2" parent="Objects" instance=ExtResource("7_wse8f")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 7.1814957, 11.612487, 6.384944)
+
+[node name="Building3" parent="Objects" instance=ExtResource("7_wse8f")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -7.227737, 11.612487, 6.384944)
+
+[node name="Building4" parent="Objects" instance=ExtResource("7_wse8f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.034365974, 11.612487, -6.514934)
+
+[node name="Building5" parent="Objects" instance=ExtResource("7_wse8f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.205246, 11.612487, -6.514933)
+
+[node name="Building6" parent="Objects" instance=ExtResource("7_wse8f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2039866, 11.612487, -6.514935)
 
 [node name="XROrigin" type="XROrigin3D" parent="." node_paths=PackedStringArray("camera", "left_hand", "right_hand")]
 script = ExtResource("5_pkg7o")
@@ -130,11 +167,11 @@ gizmo_extents = 0.01
 
 [node name="Player" parent="." node_paths=PackedStringArray("player_xr_nodes") instance=ExtResource("7_pkg7o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.057310462, 0)
+collision_layer = 0
 player_xr_nodes = NodePath("../XROrigin")
 
-[node name="Table" parent="." instance=ExtResource("8_gbfbk")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.06254241, 0.9033084, -2.112905)
-mass = 75.0
+[node name="Collision" parent="Player" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1394043, 0)
 
 [connection signal="button_pressed" from="XROrigin/LeftHand" to="XROrigin/LeftHand" method="_on_button_pressed"]
 [connection signal="area_entered" from="XROrigin/LeftHand/ObjectDetection" to="XROrigin/LeftHand" method="_on_object_detection_area_entered"]

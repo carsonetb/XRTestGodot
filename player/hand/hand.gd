@@ -14,8 +14,29 @@ var copied_collisions: Array[CollisionShape3D]
 var is_animating_pickup: bool = false
 var start_rotation: Vector3
 var inertia: Vector3
+var previous_rotation: Vector3
+var start_com: Vector3
 
-func _process(_delta: float) -> void:
+func _ready() -> void:
+	start_com = hand_object.center_of_mass
+
+func _physics_process(_delta: float) -> void:
+	var delta_rot: Vector3 = Util.euler_angle_diff(previous_rotation, rotation)
+	
+	hand_object.set_inertia(inertia)
+	var direction: Vector3 = hand_object.global_position.direction_to(global_position)
+	var distance: float = hand_object.global_position.distance_to(global_position)
+	hand_object.apply_central_force(direction * min(distance * 1000, 400))
+	
+	# try to match velocity?
+	if !holding_object || !holding_object.object.no_rotate_force:
+		hand_object.center_of_mass_mode = RigidBody3D.CENTER_OF_MASS_MODE_CUSTOM
+		hand_object.center_of_mass = start_com
+		hand_object.apply_torque(Util.euler_angle_diff(hand_object.rotation, rotation))
+		hand_object.apply_torque(Util.euler_angle_diff(hand_object.angular_velocity, delta_rot) * 0.01) 
+	
+	previous_rotation = rotation
+	
 	var aim_pos = get_input("aim_pos")
 	if aim_pos:
 		position = aim_pos
@@ -80,7 +101,7 @@ func _process(_delta: float) -> void:
 				copied.position = hand_grab_point.position + offset
 				copied_collisions.append(copied)
 	
-	if grab_force && grab_force < 0.3 && holding_object:
+	if grab_force && grab_force < 0.1 && holding_object:
 		for collision: CollisionShape3D in copied_collisions:
 			collision.queue_free()
 		copied_collisions.clear()
@@ -125,13 +146,6 @@ func _process(_delta: float) -> void:
 		holding_object.object.global_position += (hand_object.local_object_point.global_position - holding_object.object.global_position) * 0.2
 		if holding_object.object.global_position.distance_to(hand_object.local_object_point.global_position) < 0.005:
 			is_animating_pickup = false
-
-func _physics_process(_delta: float) -> void:
-	hand_object.set_inertia(inertia)
-	var direction: Vector3 = hand_object.global_position.direction_to(global_position)
-	var distance: float = hand_object.global_position.distance_to(global_position)
-	hand_object.apply_central_force(direction * min(distance * 1000, 150))
-	hand_object.apply_torque(Util.euler_angle_diff(hand_object.rotation, rotation) * extra_rotation_force)
 
 func _on_button_pressed(button_name: String) -> void:
 	if !holding_object:

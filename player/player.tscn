@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7aho2vyb6fhs"]
+[gd_scene load_steps=6 format=3 uid="uid://b7aho2vyb6fhs"]
 
 [ext_resource type="PackedScene" uid="uid://nsdmbtqblqp4" path="res://player/hand/hand_object.tscn" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://cihlxt4h0nut5" path="res://player/player.gd" id="1_rkbax"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rkbax"]
+friction = 0.2
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rkbax"]
-radius = 0.25
-height = 1.5
+radius = 0.15
+height = 3.2788086
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_rkbax"]
 radius = 0.25
@@ -15,6 +18,7 @@ height = 1.5
 collision_layer = 2
 collision_mask = 2
 mass = 20.0
+physics_material_override = SubResource("PhysicsMaterial_rkbax")
 lock_rotation = true
 script = ExtResource("1_rkbax")
 
@@ -33,4 +37,5 @@ shape = SubResource("CapsuleShape3D_rkbax")
 
 [node name="BodyMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_rkbax")
