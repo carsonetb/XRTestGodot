@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b6cnit3gmsgj6" path="res://gun/gun.tscn" id="2_fj7yv"]
 [ext_resource type="Script" uid="uid://d0s6axdysyavm" path="res://player/hand/hand.gd" id="2_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://cn0u235ioppyo" path="res://environment/grabbable_box.tscn" id="3_036b0"]
+[ext_resource type="PackedScene" uid="uid://bjlh4465xjeal" path="res://environment/floor/floor.glb" id="4_ic0uy"]
 [ext_resource type="Script" uid="uid://b7tnbcufs3h13" path="res://player/player_xr_nodes.gd" id="5_pkg7o"]
 [ext_resource type="PackedScene" uid="uid://bc4ibtotqet1h" path="res://environment/grabbable_bat/grabbable_bat.tscn" id="6_dwbse"]
 [ext_resource type="PackedScene" uid="uid://b7aho2vyb6fhs" path="res://player/player.tscn" id="7_pkg7o"]
@@ -22,8 +23,6 @@ sky = SubResource("Sky_fj7yv")
 fog_enabled = true
 fog_density = 0.03
 volumetric_fog_enabled = true
-
-[sub_resource type="BoxMesh" id="BoxMesh_fj7yv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fj7yv"]
 size = Vector3(21.683712, 0.5876465, 8.19873)
@@ -64,13 +63,18 @@ dont_rescale = false
 collision_layer = 3
 collision_mask = 3
 
-[node name="Floor" type="MeshInstance3D" parent="Objects/Floor"]
-transform = Transform3D(22, 0, 0, 0, 0.1572914, 0, 0, 0, 8.17567, 0, 0, 0)
-mesh = SubResource("BoxMesh_fj7yv")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0033016205, -0.20617676, -0.013916016)
 shape = SubResource("BoxShape3D_fj7yv")
+
+[node name="floor" parent="Objects/Floor" instance=ExtResource("4_ic0uy")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="floor2" parent="Objects/Floor" instance=ExtResource("4_ic0uy")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 9.279509, 0, 0)
+
+[node name="floor3" parent="Objects/Floor" instance=ExtResource("4_ic0uy")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -9.253035, 0, 0)
 
 [node name="Table" parent="Objects" instance=ExtResource("8_gbfbk")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.06254241, 0.9033084, -2.112905)
